@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Vitarak</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="~/images/Favicon.png" type="image/gif" sizes="20x20">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+    
+      
+</head>
+<body>
+    <nav class="navbar navbar-fixed-top">
+        <div class="nav-one navbar-blue">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle navbar-toggle1 collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand pull-left " href="#">
+                    <img src="~/images/logo.png" style="width: initial;height: 41px;margin-top: -8px;" />
+                </a> 
+
+                <a class=" MobileRes" data-toggle="dropdown" href="#">
+                    <span class="label label-warning dropdown-toggle notifyMobile" >16</span>
+                </a>
+
+                <ul class="dropdown-menu dropdown-messages" id="gridMobile"></ul>
+            </div>
+
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right marginRight0px  MobileRes1">
+                    <li class="dropdown" id="notecount">
+                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <i class="fa fa-envelope"></i>  <span class="label label-warning" id="NotificationCount" ></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-messages" id="grid"></ul>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-toggle paddingLeft5px" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" style="font-size: large;"></i> @Session["Name"]<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Notification</a></li>
+                            <li><a href="#">Subscription</a></li>
+                            <li><a href="#">Billing</a></li>
+                            <li><a href="@Url.Action("EmployeeList", "Master")" id="EmployeeIndex1">Team</a></li>
+                            <hr style="margin-top:0px;margin-bottom:0px;">
+                            <li><a href="@Url.Action("logout", "Master")">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right marginRight0px">
+                    <li class="active MobileRes">
+                        <a href="#" class="dropdown-toggle paddingLeft5px" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus" aria-hidden="true"></i> Actions</a>
+                        <ul class="dropdown-menu">
+                            <li> <a href="@Url.Action("IndexForCustomerMaster", "Master")" id="CI1"> Customer</a> </li>
+                            <li><a href="@Url.Action("IndexForAreaMaster", "Master")" id="AreaIndex1"> Area</a></li>
+                            <li><a href="@Url.Action("OpeningBalanceIndex", "Master")" id="openingBal1"> Opening Balances</a></li>
+                            <li><a href="@Url.Action("IndexForSupplierMaster", "Master")" id="SupplierIndex1"> Supplier</a></li>
+
+                            <li><a href="@Url.Action("ProductList", "Master")" id="prdid1"> Product</a></li>
+                            <li><a href="@Url.Action("IndexForVehicalMaster", "Master")" id="VehicalIndex1"> Vehicle</a></li>
+                            <li><a href="@Url.Action("EmployeeList", "Master")" id="EmployeeIndex1"> Employee</a></li>
+                            <li><a href="@Url.Action("Dashboard", "Master")" id="Dash1"> Dashboard</a></li>
+
+                            <li><a href="@Url.Action("PurchaseRates", "Action")" id="PR1"> PurchaseRates</a></li>
+                            <li><a href="@Url.Action("CustomerRates", "Master")" id="CustomerRateIndex1"> CustomerRates</a></li>
+                            <li><a href="@Url.Action("Purchase", "Action")" id="P1"> Purchase  </a></li>
+                            <li><a href="@Url.Action("Sales", "Master")" id="S1"> Sales  </a></li>
+
+                            <li><a href="@Url.Action("RptCustomer_Ladger", "Report")" id="CL1"> Customer Ledger</a></li>
+                            <li><a href="@Url.Action("RptSupplier_Ladger", "Report")" id="SL1"> Supplier Ledger</a></li>
+                            <li><a href="#"> Customer Crates Ledger</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-toggle paddingLeft5px" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus" aria-hidden="true"></i> New</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Add_Product", "Master")" data-toggle="modal" data-target="#mdlAddProduct">Add Product</a></li>
+                            <li><a href="@Url.Action("Add_Supplier", "Master")" data-toggle="modal" data-target="#mdlAddSupplier">Add Supplier</a></li>
+                            <li><a href="@Url.Action("AddArea_Route", "Master")" data-toggle="modal" data-target="#mdlAddArea">Add Area</a></li>
+                            <li><a href="@Url.Action("Add_Employee", "Master")" data-toggle="modal" data-target="#mdlAddEmployee">Add Employee</a></li>
+                            <li><a href="@Url.Action("Add_Customer", "Master")" data-toggle="modal" data-target="#mdlAddSupplier">Add Customer</a></li>
+                            <li><a href="@Url.Action("Add_Vehical", "Master")" data-toggle="modal" data-target="#mdlAddSupplier">Add Vehical</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-toggle paddingLeft5px" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i> Setting</a>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Notification</a></li>
+                            <li><a href="#">Subscription</a></li>
+                            <li><a href="#">Billing</a></li>
+                            <li><a href="@Url.Action("EmployeeList", "Master")" id="EmployeeIndex1">Team</a></li>
+                            @*<li role="separator" class="divider"></li>*@ 
+                            <li><a href="@Url.Action("logout", "Master")">Logout</a></li>
+                        </ul>
+                    </li> 
+                </ul>
+            </div>
+        </div>
+
+        <div class="nav-two navbar-blue-light">
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="@Url.Action("IndexForCustomerMaster", "Master")" id="CI"><div><i class="fa fa-user-o fa-lg" aria-hidden="true"></i></div>Customer<br /><br /></a>
+                    </li>
+                    <li><a href="@Url.Action("IndexForAreaMaster", "Master")" id="AreaIndex"><div><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i></div>Area</a></li>
+                    <li><a href="@Url.Action("OpeningBalanceIndex", "Master")" id="openingBal"><div><i class="fa fa-newspaper-o fa-lg" aria-hidden="true"></i></div>Opening Balances<br /><br /></a></li>
+                    <li><a href="@Url.Action("IndexForSupplierMaster", "Master")" id="SupplierIndex"><div><i class="fa fa-user-circle fa-lg" aria-hidden="true"></i></div>Supplier<br /><br /></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="@Url.Action("ProductList", "Master")" id="prdid"><div><i class="fa fa-tag fa-lg" aria-hidden="true"></i></div>Product<br /><br /></a></li>
+                    <li><a href="@Url.Action("IndexForVehicalMaster", "Master")" id="VehicalIndex"><div><i class="fa fa-truck fa-lg" aria-hidden="true"></i></div>Vehicle<br /><br /></a></li>
+                    <li><a href="@Url.Action("EmployeeList", "Master")" id="EmployeeIndex"><div><i class="fa fa-id-card fa-lg" aria-hidden="true"></i></div>Employee<br /><br /></a></li>
+                    <li><a href="@Url.Action("Dashboard", "Master")" id="Dash"><div><i class="fa fa-pie-chart fa-lg" aria-hidden="true"></i></div>Dashboard<br /><br /></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="@Url.Action("PurchaseRates", "Action")" id="PR"><div><i class="fa fa-handshake-o fa-lg" aria-hidden="true"></i></div>Purchase<br />Rates</a></li>
+                    <li><a href="@Url.Action("CustomerRates", "Master")" id="CustomerRateIndex"><div><i class="fa fa-cubes fa-lg" aria-hidden="true"></i></div>Customer<br />Rates</a></li>
+                    <li><a href="@Url.Action("Purchase", "Action")" id="P"><div><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></div>Purchase<br /><br /></a></li>
+                    <li><a href="@Url.Action("Sales", "Master")" id="S"><div><i class="fa fa-credit-card fa-lg" aria-hidden="true"></i></div>Sales<br /><br /></a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="@Url.Action("RptCustomer_Ladger", "Report")" id="CL"><div><i class="fa fa-file-excel-o fa-lg" aria-hidden="true"></i></div>Customer<br />Ledger</a></li>
+                    <li><a href="@Url.Action("RptSupplier_Ladger", "Report")" id="SL"><div><i class="fa fa-file-excel-o fa-lg" aria-hidden="true"></i></div>Supplier<br />Ledger</a></li>
+                    <li><a href="#"><div><i class="fa fa-file-excel-o fa-lg" aria-hidden="true"></i></div>Customer<br />Crates Ledger</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
+
+    <div>
+        @RenderBody()
+
+    </div>
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+     
+</body>
+</html>
+<script>
+
+    $(document).ready(function () {
+        $('ul li a').click(function () {
+            $('li a').removeClass("active");
+            $(this).addClass("active");
+        });
+
+        $("#notecount").on("click", function () {
+              $.ajax({
+                url: "@Url.Action("OnSeenNotificationUpdate", "Master")",
+                contentType: "application/json",
+                data: {},
+                dataType: "text",
+                type: "POST",
+                async: true,
+                success: function (data) {
+                   
+                },
+                error: function (data) {
+
+                },
+                complete: function () {
+
+                }
+            });
+        });
+
+
+
+        if ($(window).width() < 768) {
+
+            $.ajax({
+                url: "@Url.Action("_Notification", "Master")",
+                contentType: "application/json",
+                data: {},
+                dataType: "text",
+                type: "POST",
+                async: true,
+                success: function (data) {
+                    $('#gridMobile').html(data);
+                },
+                error: function (data) {
+
+                },
+                complete: function () {
+
+                }
+            });
+        }
+        else {
+            $.ajax({
+                url: "@Url.Action("_Notification", "Master")",
+                contentType: "application/json",
+                data: {},
+                dataType: "text",
+                type: "POST",
+                async: true,
+                success: function (data) {
+                    $('#grid').html(data);
+
+                },
+                error: function (data) {
+
+                },
+                complete: function () {
+
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: '/Master/NotificationCount',
+                data:
+                {
+                 
+                },
+                success: function (da) {
+                    $('#NotificationCount').html(da);
+                    if (da == 0)
+                    {
+                        $('#NotificationCount').hide();
+                    }
+                   
+                },
+
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                }
+            });
+        } 
+
+    });
+</script>
+
+<div class="modal fade bs-example-modal-md" id="mdlAddProduct" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+</div>
+<div class="modal fade bs-example-modal-md" id="mdlAddSupplier" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+</div>
+<div class="modal fade bs-example-modal-md" id="mdlAddArea" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+</div>
+<div id="mdlAddEmployee" class="modal fade" style="margin-left: 20%;padding-top: 50px;width: 60%;" data-backdrop="static" data-keyboard="false" role="dialog">
+</div>

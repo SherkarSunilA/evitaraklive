@@ -1,0 +1,81 @@
+﻿
+@using System.Data
+@model System.Data.DataTable
+
+ 
+<div class="outer">
+    <div class="inner">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                <tr>
+                    @foreach (System.Data.DataColumn col in Model.Columns)
+                    {
+
+                        <th><b>@col.Caption </b></th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Rows.Count == 0)
+                {
+                    if (Model.Columns.Count > 0)
+                    {
+                        <tr>
+                            <td colspan="@Model.Columns.Count" class="text-center"> No Data Found</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    foreach (System.Data.DataRow row in Model.Rows)
+                    {
+                        <tr>
+
+                            @foreach (System.Data.DataColumn col in Model.Columns)
+                            {
+
+
+                                if (row[col.ColumnName].ToString() == "")
+                                {
+                                    <td >
+                                        0.00
+                                    </td>
+                                }
+
+                                else
+                                {
+                                    string temp = row[col.ColumnName].ToString();
+                                    decimal Num = 0;
+                                    bool isNum = decimal.TryParse(temp, out Num);
+                                    if (isNum == false)
+                                    {
+                                        <td style="width:195px;">
+                                            <input class="form-check-input" type="checkbox" id="one">
+
+                                            <b>
+
+                                                @row[col.ColumnName].ToString().Substring(0, @row[col.ColumnName].ToString().Length - 11)
+
+                                            </b>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td >
+                                            @row[col.ColumnName]
+                                        </td>
+                                    }
+                                }
+
+                            }
+
+                        </tr>
+                    }
+                }
+                </tbody>
+        </table>
+    </div>
+</div>
+
+

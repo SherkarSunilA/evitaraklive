@@ -1,0 +1,72 @@
+﻿@model MyVitarak.Models.SupplierMaster
+@{
+    Layout = null;
+}
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+@if (Model != null)
+{
+    
+
+        <div class="col-md-1"></div> 
+
+        <div class="  col-md-9">
+            
+            <div class="ibox-content">
+                <div class="feed-activity-list">
+
+                    <div class="feed-element">
+                        <div>
+                            @Html.HiddenFor(model => model.userid, new { @id = "userid" })
+                            @Html.HiddenFor(model => model.TenantID, new { @id = "TenantID" })
+                            @Html.HiddenFor(model => model.PersonMobileNo, new { @id = "PersonMobileNo" })
+                            <small class="pull-right text-navy">1m ago</small>
+                            <strong id="ContactPerson">@Model.ContactPerson</strong>
+                            <div>@Model.PersonMobileNo</div>
+                            <div id="Address">@Model.Address</div>
+                            <small class="text-muted">Today 5:60 pm - 12.06.2014</small>
+
+                        </div>
+                        <div id="Errormsg" style="color: red;">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+             
+
+        </div>
+     
+   
+}
+    <script>
+         
+
+        $('#btnUseThis').on('click', function () {
+           // alert($("#search").val());
+
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: '/Master/AddNotification',
+
+                data:
+                {
+                    Mobile: $("#search").val()
+
+                },
+                success: function (da) {
+                    alert(da);
+                    $('#btnsave1').show();
+                    //$('#btnUseThis').hide();
+                    $("#btnUseThis").attr("disabled", true);
+                },
+
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                }
+            });
+        })
+                    
+
+    </script>

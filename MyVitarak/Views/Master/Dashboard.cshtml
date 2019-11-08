@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<h2>Dashboard</h2>
+<link href="~/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/css/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" />  
+<link href="~/css/style.css" rel="stylesheet" />
+<body>
+
+
+    <div class="wrapper1 wrapper-content1">
+
+        <div class="gray-bg">
+
+            <div class="">
+                <div class="row" id="Counts">
+
+
+                </div>
+
+               
+                    <div class="ibox float-e-margins TopMargin">
+                        <div class="ibox-title">
+                            <h5>Bussiness Report </h5>
+                           
+                        </div>
+                        <div class="ibox float-e-margins">
+                            <div class="row">
+                                <div class="row" id="DashboardData">
+
+
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    
+                                <div class="row TopMargin">
+                                    <div class="col-lg-12">
+                                        <div class="ibox float-e-margins">
+                                            <div class="ibox-title">
+
+
+                                            </div>
+                                            <div class="ibox-content">
+                                                <div class="row">
+                                                    <div class="col-lg-9">
+                                                        <div class="flot-chart">
+                                                            <div class="flot-chart-content" id="flot-dashboard-chart">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <ul class="stat-list MobileRes1">
+                                                            <li>
+                                                                <h2 class="no-margins">2,346</h2>
+                                                                <small>Total orders in period</small>
+                                                                <div class="stat-percent">48% <i class="fa fa-level-up text-navy"></i></div>
+                                                                <div class="progress progress-mini">
+                                                                    <div style="width: 48%;" class="progress-bar"></div>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <h2 class="no-margins ">4,422</h2>
+                                                                <small>Orders in last month</small>
+                                                                <div class="stat-percent">60% <i class="fa fa-level-down text-navy"></i></div>
+                                                                <div class="progress progress-mini">
+                                                                    <div style="width: 60%;" class="progress-bar"></div>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <h2 class="no-margins ">4,422</h2>
+                                                                <small>Orders in last month</small>
+                                                                <div class="stat-percent">60% <i class="fa fa-level-down text-navy"></i></div>
+                                                                <div class="progress progress-mini">
+                                                                    <div style="width: 60%;" class="progress-bar"></div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- Flot -->
+                    <script src="~/js/plugins/flot/jquery.flot.js"></script>
+                    <script src="~/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+                    <script src="~/js/plugins/flot/jquery.flot.spline.js"></script>
+                    <script src="~/js/plugins/flot/jquery.flot.resize.js"></script>
+                    <script src="~/js/plugins/flot/jquery.flot.pie.js"></script>
+                    <script src="~/js/plugins/flot/jquery.flot.symbol.js"></script>
+                    <script src="~/js/plugins/flot/jquery.flot.time.js"></script>
+                    <!-- Peity -->
+                    <script src="~/js/plugins/peity/jquery.peity.min.js"></script>
+
+                    <!-- Custom and plugin javascript -->
+                    <script src="~/js/plugins/pace/pace.min.js"></script>
+
+
+</body>
+
+<script>
+
+    $(document).ready(function () {
+        $('#Dash').addClass("active");
+         $.ajax({
+            url: "@Url.Action("DashboardCounts", "Master")",
+             data: JSON.stringify({ id: 0}),
+             dataType: "text",
+             success: function (data) {
+
+                 $('#Counts').html(data);
+            }
+        });
+         
+     
+         $.ajax({
+            url: "@Url.Action("ColumnChart", "Master")", 
+             data: {},
+             dataType: "text",
+           //  type: "POST",
+             async: false,
+             success: function (data) {
+               
+                 //data3 = data;
+                 $('#flot-dashboard-chart').html(data);
+                 
+            }
+        });
+             $.ajax({
+            url: "@Url.Action("DashboardData", "Master")", 
+             data: {},
+             dataType: "text",
+           //  type: "POST",
+             async: false,
+             success: function (data) {
+               
+                 //data3 = data;
+                 $('#DashboardData').html(data);
+                 
+            }
+        });
+         
+        });
+</script>
+
+  
